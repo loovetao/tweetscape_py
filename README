@@ -1,0 +1,15 @@
+Tweetscape.
+(c) Yuri Yuan, 2012
+
+Dependencies:
+py-MySQLdb
+tweepy (included in source... for now)
+
+
+To do:
+
+Move all those bloody mess into the git repo
+Set up the sampler to sample all the tweets
+Sleep.
+
+Yep, oyasumi~
