@@ -13,6 +13,10 @@ ConsumerKey = None
 ConsumerSecret = None
 AccessToken = None
 AccessTokenSecret = None
+db_Host = None
+db_Username = None
+db_Password = None
+db_Database = None
 
 # Process command line arguments at start
 """
