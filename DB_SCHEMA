@@ -1,0 +1,5 @@
+TABLE raw_tweets
+
+id int(24) PRIMARY #id of tweet
+json string #json string obtained from twitter stream
+indexing_status int(8) DEFAULT 0 #Status of indexing, to be modified by indedxer
