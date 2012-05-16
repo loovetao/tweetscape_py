@@ -50,6 +50,7 @@ config.read(archiver_file)
 # Initialise Tweepy
 
 import tweepy
+import simplejson as json
 import ssl # The error classes are imported for exception handling.
 try:
     if ConsumerKey is None:
@@ -88,7 +89,7 @@ except ConfigParser.NoOptionError, ConfigParser.NoSectionError:
     print 'You sure your config file valid or not? Like dat cannot connect to database!'
     sys.exit(10) # Exit code 10: Necessary configurations not set
     
-db=mysql.connect(db_Host, db_Username, db_Password, db_Database)
+db=MySQLdb.connect(db_Host, db_Username, db_Password, db_Database)
 cursor=db.cursor()
 
 # StreamListener class(es) to process the data returned from Twitter
@@ -104,7 +105,7 @@ class StreamListener_RecordJSON(tweepy.StreamListener):
         The monitor object is passed to StreamListener to enable process monitoring.
         """
         self.monitor = monitor
-
+	self.api = tweepy.API()
     def on_data(self, data):
         """
         The original on_data method is overridden to pass the json data to the on_status method.
@@ -120,15 +121,15 @@ class StreamListener_RecordJSON(tweepy.StreamListener):
         self.monitor.new_tweet(int(status.id))
         try:
             cursor.execute(query,query_param)
-        except IntegrityError: # Duplicate statuses may exist in the stream returned by Twitter, resulting in duplicate entries in database.
+        except MySQLdb.IntegrityError: # Duplicate statuses may exist in the stream returned by Twitter, resulting in duplicate entries in database.
             pass
  
 # Monitor class to monitor the spidering process
 
-class MoniterClass:
+class MonitorClass:
     tweet_count = 0
-    def new_tweet(id):
-        if tweet_count == 0:
+    def new_tweet(self,id):
+        if self.tweet_count == 0:
             print ('yep, there\'s a new tweet.\n')
         else:
             print 'New tweet: %d'%id

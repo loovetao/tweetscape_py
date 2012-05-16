@@ -5,10 +5,9 @@ from MySQLdb import IntegrityError
 from ssl import SSLError
 
 import MySQLdb as mysql
-import config
 import re
 
-db=mysql.connect(config.db_host,config.db_user,config.db_password,config.db_database)
+db=mysql.connect('localhost','root','0shishaB','firehose_archive')
 cursor=db.cursor()
 
 auth1 = tweepy.OAuthHandler('vSfPqwPbDpKSzOvcpIs3dg','fLvAmi0ATSgh8tHBTpo43VoFt2CivrVy5ayowDgg2g')
