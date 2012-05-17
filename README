@@ -8,8 +8,14 @@ tweepy (included in source... for now)
 
 To do:
 
-Move all those bloody mess into the git repo
-Set up the sampler to sample all the tweets
-Sleep.
+Refine that sampler
+Write an indexer to process the flow of information, fast.
+Note to self: Geocoding API:
+http://maps.google.com/maps/api/geocode/json?address=Seattle,+WA&sensor=false
+
+Further ideas to implement:
+
+A live map showing the location of tweets in the, say, last 15 minutes.
+But how ah, maybe store the coordinates+timestamp in the memory/separate database then do the summing?
 
 Yep, oyasumi~

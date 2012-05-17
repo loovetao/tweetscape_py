@@ -3,3 +3,13 @@ TABLE raw_tweets
 id int(24) PRIMARY #id of tweet
 json string #json string obtained from twitter stream
 indexing_status int(8) DEFAULT 0 #Status of indexing, to be modified by indedxer
+
+TABLE words
+
+word text FULL_TEXT # Word to be hashed
+word_id text # a json list of word ids
+
+TABLE hash_index
+
+word_id int PRIMARY # Word ID
+records text # A JSON list of tweets involved, truncated at 1MB.
