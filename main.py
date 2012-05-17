@@ -1,8 +1,9 @@
 # Tweetscape archiver
 # (c) Yuri Yuan, 2012
-# Last modification: 25 April 2012
+# Last modification: 17 May 2012
 
 import sys # Used for non-zero exit codes
+import utils
 
 # Debug codes
 archiver_file = "archiver.conf"
@@ -43,9 +44,7 @@ parser.add_argument('-d','--daemon',)
 
 # Open the configuration file
 
-import ConfigParser
-config = ConfigParser.ConfigParser()
-config.read(archiver_file)
+config = utils.Config(archiver_file)
 
 # Initialise Tweepy
 

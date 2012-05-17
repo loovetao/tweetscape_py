@@ -13,3 +13,10 @@ TABLE hash_index
 
 word_id int PRIMARY # Word ID
 records text # A JSON list of tweets involved, truncated at 1MB.
+
+TABLE geocodes
+
+name char(60) PRIMARY #Name
+lon float
+lat float
+radius int

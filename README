@@ -12,6 +12,8 @@ Refine that sampler
 Write an indexer to process the flow of information, fast.
 Note to self: Geocoding API:
 http://maps.google.com/maps/api/geocode/json?address=Seattle,+WA&sensor=false
+A list of available WebGL globes can be found at http://whatnicklife.blogspot.jp/2011/06/webgl-globes-round-up-in-face-of.html 
+Keep an eye on the supposedly coming WorldWind globe
 
 Further ideas to implement:
 
