@@ -76,7 +76,7 @@ class Config:
 
 class Geocode:
     def __init__(self,db_cursor= None,yahoo_app_id=None):
-        if db_connection is None or yahoo_app_id is None:
+        if db_cursor is None or yahoo_app_id is None:
             pass # Supposed to throw an exception.
         self.db_cursor = db_cursor
         self.yahoo_app_id = yahoo_app_id
@@ -94,9 +94,10 @@ class Geocode:
             print 'Duplicate Entry In DB'
             
     def cache_read(self,name):        
+        name = urllib.quote_plus(name)
         query = "SELECT * FROM geocodes WHERE name = '%s';"%(name,)
         if not self.db_cursor.execute(query):
-            return false
+            return False
         result = self.db_cursor.fetchone()
         if result[4]: # If no result was returned by the Geocoding API
             return {'no_result':True}
@@ -121,6 +122,6 @@ class Geocode:
         lon = float(result['longitude'])
         lat = float(result['latitude'])
         radius = int(result['radius'])
-        cache_write(name,lon,lat,radius,False)
+        self.cache_write(name,lon,lat,radius,False)
         return {'no_result':False,'lon':lon,'lat':lat,'radius':radius}
         
